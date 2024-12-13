@@ -76,14 +76,6 @@ pipeline {
               }
         }
 
-        stage('Build App Image'){
-         steps {
-                   script{
-                   dockerImage=docker.build registry + ":V$BUILD_NUMBER"
-                   }
-              }
-        }
-
         stage('Kubernetes deploy'){
         agent{label 'KOPS'}
          steps {
